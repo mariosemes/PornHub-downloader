@@ -13,40 +13,62 @@ This script does not run without this tools:
 ## Installation
 1. Download the script
 2. Apply permission to execute:
-`$ chmod +x /path/to/phdler.sh`
+```bash
+$ chmod +x /path/to/phdler.sh
+```
 3. **(Recommended)** If you want to use the script globally, you need to copy the file to your /usr/local/bin directory. For easier use, copy it without the .sh extension like this:
-`$ sudo cp /path/to/phdler.sh /usr/local/bin/phdler`
+```bash
+$ sudo cp /path/to/phdler.sh /usr/local/bin/phdler
+```
 
 ## Before usage !!!
 Before you run the script for the first time, please go to your downloaded location of phdler and edit the PATH locations in phdler.sh. Use any editor you like (nano, vim, etc.)
 
 **phdler folder is where you downloaded the script**
-`filelocation=/path/to/phdler/`
+```bash
+filelocation=/path/to/phdler/
+```
 **dllocation is where you want phdler to download media**
-`dllocation=/path/to/your/download/folder`
+```bash
+dllocation=/path/to/your/download/folder
+```
 **updated.txt is where you want the updated.txt file to be placed**
-`updatefile=/path/to/your/updated.txt`
+```bash
+updatefile=/path/to/your/updated.txt
+```
 
 
 ## Usage
 Basic command line syntax:
-`$ phdler [action] [command] [tag]`
+```bash
+$ phdler [action] [command] [tag]
+```
 
 ## Examples:
 Start download
-`$ phdler run`
+```bash
+$ phdler run
+```
 
 Download a custom URL from PornHub
-`$ phdler custom https://url`
+```bash
+$ phdler custom https://url
+```
 
 Adding a new PornHub model to the database
-`$ phdler add model model-name-from-url`
+```bash
+$ phdler add model model-name-from-url
+```
 
 Adding a new PornHub pornstar to the database
-`$ phdler add pornstar model-name-from-url`
+```bash
+$ phdler add pornstar model-name-from-url
+```
 
 Downloading new added models/pornstars
-`$ phdler new`
+```bash
+$ phdler new
+```
 
 ## Warning
 The default script "**phdler run**" uses the .txt files as a database and every time it runs, it will only download the latest 4 videos. So you dont spam PornHub and keep it calm :)
