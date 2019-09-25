@@ -37,7 +37,7 @@ dllocation=/path/to/your/download/folder
 updatefile=/path/to/your/updated.txt
 ```
 
-## How do I know the model/pornstar name or if its a model or a porstar
+## How do I know the model/pornstar name or if its a model or a pornstar
 **Pritty simple, lets take a look at this url:**
 
 https://www.pornhub.com/model/themagicmuffin
