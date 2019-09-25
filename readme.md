@@ -52,10 +52,11 @@ https://www.pornhub.com/pornstar/leolulu
 2. **category:** pornstar
 3. **pornstar name:** leolulu
 
+
 ## Usage
 Basic command line syntax:
 ```bash
-$ phdler [action] [command] [tag]
+$ phdler [run | new | custom | add] [url | model | pornstar] [url]
 ```
 
 ## Examples:
