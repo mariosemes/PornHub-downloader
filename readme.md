@@ -37,6 +37,20 @@ dllocation=/path/to/your/download/folder
 updatefile=/path/to/your/updated.txt
 ```
 
+## How do I know the model/pornstar name or if its a model or a porstar
+**Pritty simple, lets take a look at this url:**
+
+https://www.pornhub.com/model/themagicmuffin
+
+1. **url:** https://www.pornhub.com/
+2. **category:** model
+3. **model name:** themagicmuffin
+
+https://www.pornhub.com/pornstar/leolulu
+
+1. **url:** https://www.pornhub.com/
+2. **category:** pornstar
+3. **pornstar name:** leolulu
 
 ## Usage
 Basic command line syntax:
