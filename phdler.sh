@@ -18,8 +18,7 @@ if [ "$action" == 'new' ]
 	then
 		filename="$filelocation"models-new.txt
 		filelines=`cat $filename`
-
-		echo Starting models
+		
 		for line in $filelines ; do
 		       echo Searching for $line
 		       if grep -Fxq "$line" "$filelocation"models.txt
@@ -36,12 +35,18 @@ if [ "$action" == 'new' ]
 			       	echo $line >> "$filelocation"models.txt
 			       	echo $line added to models.txt
 			   fi
+			   echo "Do you wish to clean the models-new.txt file?"
+				select yn in "yes" "no"; do
+				    case $yn in
+				        yes ) > "$filelocation"models.txt; break;;
+				        no ) exit;;
+				    esac
+				done
 		done
 
 		filenameps="$filelocation"stars-new.txt
 		filelinesps=`cat $filenameps`
 
-		echo Starting stars
 		for lineps in $filelinesps ; do
 		        echo Searching for $lineps
 		        if grep -Fxq "$lineps" "$filelocation"stars.txt
@@ -58,6 +63,13 @@ if [ "$action" == 'new' ]
 			       	echo $lineps >> "$filelocation"stars.txt
 			       	echo $lineps added to stars.txt
 			   fi
+				echo "Do you wish to clean the stars-new.txt file?"
+				select yn in "yes" "no"; do
+				    case $yn in
+				        yes ) > "$filelocation"stars.txt; break;;
+				        no ) exit;;
+				    esac
+				done
 		done
 
 		echo updated >> $updatefile
