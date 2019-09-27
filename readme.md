@@ -87,7 +87,7 @@ $ phdler refresh
 
 ## Warning
 The default script "**phdler start**" uses the .txt files as a database and every time it runs, it will only download the latest 4 videos. So you dont spam PornHub and keep it calm :)
-This is the reason why you have options like "**NEW**" to download and add the new models/pornstars to the database. 
+This is the reason why you have options like "**REFRESH**" to download and add the new models/pornstars to the database. 
 
 ## Best Practice
 phdler is designed to run as a cronjob. Just type this:
