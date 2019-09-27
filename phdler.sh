@@ -9,9 +9,6 @@ dllocation=/home/msemes/phmedia
 currentdate=`date +"%d-%m-%Y %T"`
 updatefile=/home/msemes/updated.txt
 
-### Check if YouTube-DL has update
-youtube-dl -U
-
 
 ### Start script
 if [ "$action" == 'new' ]
@@ -107,23 +104,49 @@ elif [ "$action" == 'run' ]
 
 elif [ "$action" == 'add' ]
 	then
-
 		if [ "$command" == 'model' ]
 			then
-				echo $tag >> "$filelocation"models-new.txt
-				echo $"Model added."
-				exit 1;
+				if grep -Fxq "$tag" "$filelocation"models.txt
+				then
+					echo Model exists.
+					exit 1;
+				else
+					echo $tag >> "$filelocation"models-new.txt
+					echo $"Model added."
+					exit 1;
+				fi
 		elif [ "$command" == 'pornstar' ]
 			then
-				echo $tag >> "$filelocation"stars-new.txt
-				echo $"Pornstar added."
-				exit 1;
+				if grep -Fxq "$tag" "$filelocation"stars.txt
+				then
+					echo Pornstar exists.
+					exit 1;
+				else
+					echo $tag >> "$filelocation"stars-new.txt
+					echo $"Pornstar added."
+					exit 1;
+				fi
 		else
 				echo $"Please run phdler add model/pornstar"
 				exit 1;
 		fi
 
+elif [ "$action" == 'update' ]
+	then
+		youtube-dl -U
+		exit 1;
+
+elif [ "$action" == '-h' ]
+	then
+		echo $"You asked for help, here it comes!"
+		echo $"$ phdler run (to start the script with already added models/pornstars)"
+		echo $"$ phdler new (to run the script and add/download the fresh database)"
+		echo $"$ phdler custom *url* (to download a custom URL from PornHub)"
+		echo $"$ phdler add *model or pornstar* (to add a new model or pornstar to the database)"
+		echo $"$ phdler update (to update youtube-dl to the latest version. Root permissions maybe needed)"
+		exit 1;
+
 else
-		echo $"Please run phdler with these commands: run, new, custom or add"
+		echo $"Please run phdler with these commands: run, new, custom, add, update or -h for help!"
 		exit 1;
 fi
