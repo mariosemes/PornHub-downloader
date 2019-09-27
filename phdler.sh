@@ -4,10 +4,10 @@
 action=$1
 command=$2
 tag=$3
-filelocation=/path/to/phdler/
-dllocation=/path/to/your/download/folder
+filelocation=/home/msemes/phdler/
+dllocation=/home/msemes/phmedia
 currentdate=`date +"%d-%m-%Y %T"`
-updatefile=/path/to/your/updated.txt
+updatefile=/home/msemes/updated.txt
 
 ### Check if YouTube-DL has update
 youtube-dl -U
@@ -24,7 +24,13 @@ if [ "$action" == 'new' ]
 		       echo Searching for $line
 		       if grep -Fxq "$line" "$filelocation"models.txt
 			       then
-			       	echo model exists.
+			       	echo "Model exists. Do you wish to download it anyways?"
+					select yn in "yes" "no"; do
+					    case $yn in
+					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$line'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$line'/videos/upload'; break;;
+					        no ) exit;;
+					    esac
+					done
 			       else
 			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$line'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$line'/videos/upload'
 			       	echo $line >> "$filelocation"models.txt
@@ -40,7 +46,13 @@ if [ "$action" == 'new' ]
 		        echo Searching for $lineps
 		        if grep -Fxq "$lineps" "$filelocation"stars.txt
 			       then
-			       	echo pornstar exists.
+			       	echo "Pornstar exists. Do you wish to download it anyways?"
+					select yn in "yes" "no"; do
+					    case $yn in
+					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$lineps'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$lineps'/videos/upload'; break;;
+					        no ) exit;;
+					    esac
+					done
 			       else
 			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$lineps'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$lineps'/videos/upload'
 			       	echo $lineps >> "$filelocation"stars.txt
