@@ -56,13 +56,13 @@ https://www.pornhub.com/pornstar/leolulu
 ## Usage
 Basic command line syntax:
 ```bash
-$ phdler [run | new | custom | add] [url | model | pornstar] [url]
+$ phdler [start | refresh | custom | add] [url | model | pornstar] [url]
 ```
 
 ## Examples:
 Start download
 ```bash
-$ phdler run
+$ phdler start
 ```
 
 Download a custom URL from PornHub
@@ -82,18 +82,18 @@ $ phdler add pornstar model-name-from-url
 
 Downloading new added models/pornstars
 ```bash
-$ phdler new
+$ phdler refresh
 ```
 
 ## Warning
-The default script "**phdler run**" uses the .txt files as a database and every time it runs, it will only download the latest 4 videos. So you dont spam PornHub and keep it calm :)
+The default script "**phdler start**" uses the .txt files as a database and every time it runs, it will only download the latest 4 videos. So you dont spam PornHub and keep it calm :)
 This is the reason why you have options like "**NEW**" to download and add the new models/pornstars to the database. 
 
 ## Best Practice
 phdler is designed to run as a cronjob. Just type this:
 `$ crontab -e`
 and then on the end of the file add this:
-`*/12 * * * phdler run >/dev/null 2>&1`
+`*/12 * * * phdler start >/dev/null 2>&1`
 This will make the script run every 12 hours.
 
 #### Permission problems or script not running with crontab

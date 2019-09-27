@@ -11,7 +11,7 @@ updatefile=/home/msemes/updated.txt
 
 
 ### Start script
-if [ "$action" == 'new' ]
+if [ "$action" == 'refresh' ]
 	then
 		filename="$filelocation"models-new.txt
 		filelines=`cat $filename`
@@ -82,7 +82,7 @@ elif [ "$action" == 'custom' ]
 		echo `date` >> $updatefile
 		fi
 
-elif [ "$action" == 'run' ]
+elif [ "$action" == 'start' ]
 	then 
 		rm $updatefile		
 		filename="$filelocation"models.txt
@@ -139,14 +139,14 @@ elif [ "$action" == 'update' ]
 elif [ "$action" == '-h' ]
 	then
 		echo $"You asked for help, here it comes!"
-		echo $"$ phdler run (to start the script with already added models/pornstars)"
-		echo $"$ phdler new (to run the script and add/download the fresh database)"
+		echo $"$ phdler start (to start the script with already added models/pornstars)"
+		echo $"$ phdler refresh (to run the script and add/download the fresh database)"
 		echo $"$ phdler custom *url* (to download a custom URL from PornHub)"
 		echo $"$ phdler add *model or pornstar* (to add a new model or pornstar to the database)"
 		echo $"$ phdler update (to update youtube-dl to the latest version. Root permissions maybe needed)"
 		exit 1;
 
 else
-		echo $"Please run phdler with these commands: run, new, custom, add, update or -h for help!"
+		echo $"Please run phdler with these commands: start, refresh, custom, add, update or -h for help!"
 		exit 1;
 fi
