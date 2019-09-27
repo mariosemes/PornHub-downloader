@@ -1,6 +1,5 @@
 # PornHub Downloader
 
-[![GitHub Download Count](https://github-basic-badges.herokuapp.com/downloads/mariosemes/PornHub-downloader/total.svg)]()
 [![GitHub Issues Open](https://github-basic-badges.herokuapp.com/issues/mariosemes/PornHub-downloader.svg)]()
 
 
