@@ -18,9 +18,9 @@ This script does not run without this tools:
 ```bash
 $ chmod +x /path/to/phdler.sh
 ```
-3. **(Recommended)** If you want to use the script globally, you need to copy the file to your /usr/local/bin directory. For easier use, copy it without the .sh extension like this:
+3. **(Recommended)** If you want to use the script globally, you need to copy the file to your /usr/local/bin directory. For easier use, create a symlink without the .sh extension like this:
 ```bash
-$ sudo cp /path/to/phdler.sh /usr/local/bin/phdler
+$ sudo ln -s /path/to/phdler.sh /usr/local/bin/phdler
 ```
 
 ## Before usage !!!
