@@ -18,7 +18,7 @@ if [ "$action" == 'new' ]
 	then
 		filename="$filelocation"models-new.txt
 		filelines=`cat $filename`
-		
+
 		for line in $filelines ; do
 		       echo Searching for $line
 		       if grep -Fxq "$line" "$filelocation"models.txt
@@ -38,7 +38,7 @@ if [ "$action" == 'new' ]
 			   echo "Do you wish to clean the models-new.txt file?"
 				select yn in "yes" "no"; do
 				    case $yn in
-				        yes ) > "$filelocation"models.txt; break;;
+				        yes ) > "$filelocation"models-new.txt; break;;
 				        no ) exit;;
 				    esac
 				done
@@ -66,7 +66,7 @@ if [ "$action" == 'new' ]
 				echo "Do you wish to clean the stars-new.txt file?"
 				select yn in "yes" "no"; do
 				    case $yn in
-				        yes ) > "$filelocation"stars.txt; break;;
+				        yes ) > "$filelocation"stars-new.txt; break;;
 				        no ) exit;;
 				    esac
 				done
