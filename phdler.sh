@@ -189,7 +189,7 @@ elif [ "$action" == 'config' ]
 
 elif [ "$action" == 'update' ]
 	then
-		youtube-dl -U
+		sh $HOME/phdler/update.sh
 		exit 1;
 
 elif [ "$action" == '-h' ]
