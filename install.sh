@@ -20,7 +20,7 @@ echo $"phdler folder created"
 cp phdler.sh $HOME/phdler/phdler.sh
 chmod +x $HOME/phdler/phdler.sh
 cp phdler.config $HOME/phdler/phdler.config
-cp install.sh $HOME/phdler/update.sh
+cp update.sh $HOME/phdler/update.sh
 chmod +x $HOME/phdler/update.sh
 echo $"script & config moved"
 touch $HOME/phdler/stars.txt
