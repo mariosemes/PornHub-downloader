@@ -11,6 +11,7 @@ if ! [ -x "$(command -v aria2c)" ]; then
   echo $"Error: aria2c is not installed."
   echo $"Please, install the tool as mentioned in the installation guide."
   ecto $"or try to install it: sudo apt-get install aria2 -y"
+  exit 1;
 fi
 
 ### Moving files
@@ -19,7 +20,7 @@ echo $"phdler folder created"
 cp phdler.sh $HOME/phdler/phdler.sh
 chmod +x $HOME/phdler/phdler.sh
 cp phdler.config $HOME/phdler/phdler.config
-cp phdler.sh $HOME/phdler/update.sh
+cp install.sh $HOME/phdler/update.sh
 chmod +x $HOME/phdler/update.sh
 echo $"script & config moved"
 touch $HOME/phdler/stars.txt
