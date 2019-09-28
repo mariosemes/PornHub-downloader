@@ -15,34 +15,18 @@ This script does not run without this tools:
 ## Installation
 ```bash
 $ wget https://github.com/mariosemes/PornHub-downloader/archive/master.zip
-```
-```bash
 $ unzip master.zip
-```
-```bash
 $ cd PornHub-downloader-master/
-```
-```bash
 $ chmod +x install.sh
-```
-```bash
 $ ./install.sh
-```
-```bash
-$ Please run this command as admin and dont forget to rename .your-user-name.:
+
+(Please run this command as admin and dont forget to rename .your-user-name.:)
 $ sudo ln -s /home/your-user-name/phdler/phdler.sh /usr/local/bin/phdler
-```
-```bash
 $ sudo apt-get install youtube-dl
-```
-```bash
 $ sudo apt-get install aria2
-```
-```bash
-Edit the config file with your download location path.
+
+(Edit the config file with your download location path.)
 $ phdler config
-```
-```bash
 $ phdler
 ```
 
