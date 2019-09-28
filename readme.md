@@ -13,30 +13,37 @@ This script does not run without this tools:
 2. aria2c (sudo apt-get install aria2)
 
 ## Installation
-1. Download the script
-2. Apply permission to execute:
 ```bash
-$ chmod +x /path/to/phdler.sh
+$ wget https://github.com/mariosemes/PornHub-downloader/archive/master.zip
 ```
-3. **(Recommended)** If you want to use the script globally, you need to copy the file to your /usr/local/bin directory. For easier use, create a symlink without the .sh extension like this:
 ```bash
-$ sudo ln -s /path/to/phdler.sh /usr/local/bin/phdler
+$ unzip master.zip
 ```
-
-## Before usage !!!
-Before you run the script for the first time, please go to your downloaded location of phdler and edit the PATH locations in phdler.sh. Use any editor you like (nano, vim, etc.)
-
-**phdler folder is where you downloaded the script**
 ```bash
-filelocation=/path/to/phdler/
+$ cd PornHub-downloader-master/
 ```
-**dllocation is where you want phdler to download media**
 ```bash
-dllocation=/path/to/your/download/folder
+$ chmod +x install.sh
 ```
-**updated.txt is where you want the updated.txt file to be placed**
 ```bash
-updatefile=/path/to/your/updated.txt
+$ ./install.sh
+```
+```bash
+$ Please run this command as admin and dont forget to rename .your-user-name.:
+$ sudo ln -s /home/your-user-name/phdler/phdler.sh /usr/local/bin/phdler
+```
+```bash
+$ sudo apt-get install youtube-dl
+```
+```bash
+$ sudo apt-get install aria2
+```
+```bash
+Edit the config file with your download location path.
+$ phdler config
+```
+```bash
+$ phdler
 ```
 
 ## How do I know the model/pornstar name or if its a model or a pornstar
@@ -58,7 +65,7 @@ https://www.pornhub.com/pornstar/leolulu
 ## Usage
 Basic command line syntax:
 ```bash
-$ phdler [start | refresh | custom | add] [url | model | pornstar] [url]
+$ phdler [start | refresh | custom | add | remove | clean | update | config | -h for help] 
 ```
 
 ## Examples:
