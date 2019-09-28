@@ -4,11 +4,9 @@
 action=$1
 command=$2
 tag=$3
-filelocation=$HOME/phdler/
-dllocation=$HOME/phmedia
-currentdate=`date +"%d-%m-%Y %T"`
-updatefile=$HOME/updated.txt
 
+### Loading config file
+source $HOME/phdler/phdler.config
 
 ### Start script
 if [ "$action" == 'refresh' ]
@@ -32,13 +30,6 @@ if [ "$action" == 'refresh' ]
 			       	echo $line >> "$filelocation"models.txt
 			       	echo $line added to models.txt
 			   fi
-			   echo "Do you wish to clean the models-new.txt file?"
-				select yn in "yes" "no"; do
-				    case $yn in
-				        yes ) > "$filelocation"models-new.txt; break;;
-				        no ) exit;;
-				    esac
-				done
 		done
 
 		filenameps="$filelocation"stars-new.txt
@@ -60,13 +51,6 @@ if [ "$action" == 'refresh' ]
 			       	echo $lineps >> "$filelocation"stars.txt
 			       	echo $lineps added to stars.txt
 			   fi
-				echo "Do you wish to clean the stars-new.txt file?"
-				select yn in "yes" "no"; do
-				    case $yn in
-				        yes ) > "$filelocation"stars-new.txt; break;;
-				        no ) exit;;
-				    esac
-				done
 		done
 
 		echo updated >> $updatefile
