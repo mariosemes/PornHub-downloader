@@ -4,10 +4,10 @@
 action=$1
 command=$2
 tag=$3
-filelocation=/home/msemes/phdler/
-dllocation=/home/msemes/phmedia
+filelocation=$HOME/phdler/
+dllocation=$HOME/phmedia
 currentdate=`date +"%d-%m-%Y %T"`
-updatefile=/home/msemes/updated.txt
+updatefile=$HOME/updated.txt
 
 
 ### Start script
