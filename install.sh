@@ -27,6 +27,10 @@ touch $HOME/phdler/stars.txt
 touch $HOME/phdler/stars-new.txt
 touch $HOME/phdler/models.txt
 touch $HOME/phdler/models-new.txt
+touch $HOME/phdler/users.txt
+touch $HOME/phdler/users-new.txt
+touch $HOME/phdler/channels.txt
+touch $HOME/phdler/channels-new.txt
 echo $"files created"
 echo $"-----------------"
 echo $"Script installed."
