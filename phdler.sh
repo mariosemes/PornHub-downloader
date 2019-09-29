@@ -64,7 +64,7 @@ elif [ "$action" == 'refresh' ]
 					select yn in "yes" "no"; do
 					    case $yn in
 					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$line'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$line'/videos/upload'; break;;
-					        no ) echo $"ok."
+					        no ) exit 1;
 					    esac
 					done
 			       else
@@ -85,7 +85,7 @@ elif [ "$action" == 'refresh' ]
 					select yn in "yes" "no"; do
 					    case $yn in
 					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$lineps'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$lineps'/videos/upload'; break;;
-					        no ) echo $"ok."
+					        no ) exit 1;
 					    esac
 					done
 			       else
@@ -106,7 +106,7 @@ elif [ "$action" == 'refresh' ]
 					select yn in "yes" "no"; do
 					    case $yn in
 					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$lineus'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$lineus'/videos/public'; break;;
-					        no ) echo $"ok."
+					        no ) exit 1;
 					    esac
 					done
 			       else
@@ -127,7 +127,7 @@ elif [ "$action" == 'refresh' ]
 					select yn in "yes" "no"; do
 					    case $yn in
 					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$linech'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$linech'/videos'; break;;
-					        no ) echo $"ok."
+					        no ) exit 1;
 					    esac
 					done
 			       else
