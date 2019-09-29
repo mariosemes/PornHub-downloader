@@ -65,12 +65,7 @@ $ phdler custom https://url
 
 Adding a new PornHub model to the database
 ```bash
-$ phdler add model model-name-from-url
-```
-
-Adding a new PornHub pornstar to the database
-```bash
-$ phdler add pornstar model-name-from-url
+$ phdler add model-name-from-url
 ```
 
 Downloading new added models/pornstars
@@ -86,7 +81,7 @@ This is the reason why you have options like "**REFRESH**" to download and add t
 phdler is designed to run as a cronjob. Just type this:
 `$ crontab -e`
 and then on the end of the file add this:
-`*/12 * * * phdler start >/dev/null 2>&1`
+`* */12 * * * phdler start >/dev/null 2>&1`
 This will make the script run every 12 hours.
 
 #### Permission problems or script not running with crontab
