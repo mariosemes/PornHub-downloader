@@ -9,8 +9,9 @@ Hello everyone. This project was created for myself as a platform for learning b
 
 ## Requirements
 This script does not run without this tools:
-1. YouTube-DL (sudo apt-get install youtube-dl)
-2. aria2c (sudo apt-get install aria2)
+1. YouTube-DL
+2. aria2c
+(google it for installation)
 
 ## Installation
 ```bash
