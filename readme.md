@@ -22,8 +22,6 @@ $ ./install.sh
 
 (Please run this command as admin and dont forget to rename .your-user-name.:)
 $ sudo ln -s /home/your-user-name/phdler/phdler.sh /usr/local/bin/phdler
-$ sudo apt-get install youtube-dl
-$ sudo apt-get install aria2
 
 (Edit the config file with your download location path.)
 $ phdler config
