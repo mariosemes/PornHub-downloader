@@ -106,9 +106,9 @@ elif [ "$action" == 'custom' ]
 		if [ "$command" == '' ]
 		then
 			clear
-			echo $"-----------------"
-			echo $"Please run [phdler custom <ph url>]"
-			echo $"-----------------"
+			echo "-----------------"
+			echo "Please run [phdler custom <ph url>]"
+			echo "-----------------"
 			exit 1;
 		else
 			youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/handpicked/%(title)s.%(ext)s' $command
@@ -119,9 +119,9 @@ elif [ "$action" == 'add' ]
 		if [ "$command" == '' ]
 		then
 				clear
-				echo $"-----------------"
-				echo $"Please run [phdler add model-name/pornstar-name/user-name/channel-name]"
-				echo $"-----------------"
+				echo "-----------------"
+				echo "Please run [phdler add model-name/pornstar-name/user-name/channel-name]"
+				echo "-----------------"
 				exit 1;
 		else
 
@@ -136,10 +136,10 @@ elif [ "$action" == 'add' ]
 				exit 1;
 			else
 				echo $command >> $stars_file_new
-				echo $"Pornstar added."
-				echo $"---------------"
-				echo $"Please run [phdler refresh] to download new content."
-				echo $"-----------------"
+				echo "Pornstar added."
+				echo "---------------"
+				echo "Please run [phdler refresh] to download new content."
+				echo "-----------------"
 				exit 1;
 			fi
 			exit 1;
@@ -158,10 +158,10 @@ elif [ "$action" == 'add' ]
 				exit 1;
 			else
 				echo $command >> $models_file_new
-				echo $"Model added."
-				echo $"---------------"
-				echo $"Please run [phdler refresh] to download new content."
-				echo $"-----------------"
+				echo "Model added."
+				echo "---------------"
+				echo "Please run [phdler refresh] to download new content."
+				echo "-----------------"
 				exit 1;
 			fi
 			exit 1;
@@ -180,10 +180,10 @@ elif [ "$action" == 'add' ]
 				exit 1;
 			else
 				echo $command >> $channels_file_new
-				echo $"Channel added."
-				echo $"---------------"
-				echo $"Please run [phdler refresh] to download new content."
-				echo $"-----------------"
+				echo "Channel added."
+				echo "---------------"
+				echo "Please run [phdler refresh] to download new content."
+				echo "-----------------"
 				exit 1;
 			fi
 			exit 1;
@@ -202,10 +202,10 @@ elif [ "$action" == 'add' ]
 				exit 1;
 			else
 				echo $command >> $users_file_new
-				echo $"User added."
-				echo $"-----------------"
-				echo $"Please run [phdler refresh] to download new content."
-				echo $"-----------------"
+				echo "User added."
+				echo "-----------------"
+				echo "Please run [phdler refresh] to download new content."
+				echo "-----------------"
 				exit 1;
 			fi
 			exit 1;
@@ -219,25 +219,25 @@ elif [ "$action" == 'clean' ]
 		if [ "$command" == 'models' ]
 			then
 				> $models_file_new
-				echo $"models-new.txt cleaned."
+				echo "models-new.txt cleaned."
 				exit 1;
 				
 		elif [ "$command" == 'pornstars' ]
 			then
 				> $stars_file_new
-				echo $"stars-new.txt cleaned."
+				echo "stars-new.txt cleaned."
 				exit 1;
 
 		elif [ "$command" == 'channels' ]
 			then
 				> $channels_file_new
-				echo $"channels-new.txt cleaned."
+				echo "channels-new.txt cleaned."
 				exit 1;
 
 		elif [ "$command" == 'users' ]
 			then
 				> $users_file_new
-				echo $"users-new.txt cleaned."
+				echo "users-new.txt cleaned."
 				exit 1;
 
 		elif [ "$command" == 'all' ]
@@ -246,15 +246,15 @@ elif [ "$action" == 'clean' ]
 				> $stars_file_new
 				> $channels_file_new
 				> $users_file_new
-				echo $"All fresh txts are cleaned."
+				echo "All fresh txts are cleaned."
 				exit 1;
 				
 		else
 				clear
-				echo $"-----------------"
-				echo $"Please run phdler clean with these commands:"
-				echo $"[models | pornstars | channels | users | all]"
-				echo $"-----------------"
+				echo "-----------------"
+				echo "Please run phdler clean with these commands:"
+				echo "[models | pornstars | channels | users | all]"
+				echo "-----------------"
 				exit 1;
 		fi
 
@@ -263,12 +263,12 @@ elif [ "$action" == 'remove' ]
 		if [ "$command" == 'model' ]
 			then
 				clear
-				echo $"Listing of models:"
-				echo $"-----------------"
+				echo "Listing of models:"
+				echo "-----------------"
 				while IFS= read -r modellist; do
 					echo $modellist
 				done <$models_file
-				echo $"-----------------"
+				echo "-----------------"
 				read -p 'Write the model name to remove (or type c to cancel): ' modelname
 
 				if [ "$modelname" != 'c' ]
@@ -284,12 +284,12 @@ elif [ "$action" == 'remove' ]
 		elif [ "$command" == 'pornstar' ]
 			then
 				clear
-				echo $"Listing of pornstars:"
-				echo $"-----------------"
+				echo "Listing of pornstars:"
+				echo "-----------------"
 				while IFS= read -r starslist; do
 					echo $starslist
 				done <$stars_file
-				echo $"-----------------"
+				echo "-----------------"
 				read -p 'Write the pornstar name to remove (or type c to cancel): ' starname
 
 				if [ "$starname" != 'c' ]
@@ -305,12 +305,12 @@ elif [ "$action" == 'remove' ]
 		elif [ "$command" == 'channel' ]
 			then
 				clear
-				echo $"Listing of channels:"
-				echo $"-----------------"
+				echo "Listing of channels:"
+				echo "-----------------"
 				while IFS= read -r channellist; do
 					echo $channellist
 				done <$channels_file
-				echo $"-----------------"
+				echo "-----------------"
 				read -p 'Write the channel name to remove (or type c to cancel): ' channelname
 
 				if [ "$channelname" != 'c' ]
@@ -326,12 +326,12 @@ elif [ "$action" == 'remove' ]
 		elif [ "$command" == 'user' ]
 			then
 				clear
-				echo $"Listing of users:"
-				echo $"-----------------"
+				echo "Listing of users:"
+				echo "-----------------"
 				while IFS= read -r userlist; do
 					echo $userlist
 				done <$users_file
-				echo $"-----------------"
+				echo "-----------------"
 				read -p 'Write the user name to remove (or type c to cancel): ' usname
 
 				if [ "$usname" != 'c' ]
@@ -345,10 +345,10 @@ elif [ "$action" == 'remove' ]
 				fi
 
 		else
-			echo $"-----------------"
-			echo $"Please run phdler remove with these commands:"
-			echo $"[model | pornstar | channel | user]"
-			echo $"-----------------"
+			echo "-----------------"
+			echo "Please run phdler remove with these commands:"
+			echo "[model | pornstar | channel | user]"
+			echo "-----------------"
 			exit 1;
 		fi
 
@@ -365,20 +365,20 @@ elif [ "$action" == 'update' ]
 elif [ "$action" == '-h' ]
 	then
 		clear
-		echo $"-----------------"
-		echo $"You asked for help, here it comes! Run phdler with these commands:"
-		echo $"-----------------"
-		echo $"start (to start the script with already added models/pornstars)"
-		echo $"refresh (to run the script and download from the fresh database)"
-		echo $"custom *url* (to download a custom URL from PornHub)"
-		echo $"add *model/pornstar/channel/user* (to add a new model or pornstar to the database)"
-		echo $"remove *model/pornstar/channel/user* (to remove a model or pornstar from the database)"
-		echo $"clean *models/pornstars/channels/users* (to clean the -new.txt database)"
-		echo $"config (to edit the config file)"
-		echo $"update (to update script to the latest version)"
-		echo $"-----------------"
-		echo $"Example: phdler add here-goes-the-model-name"
-		echo $"-----------------"
+		echo "-----------------"
+		echo "You asked for help, here it comes! Run phdler with these commands:"
+		echo "-----------------"
+		echo "start (to start the script with already added models/pornstars)"
+		echo "refresh (to run the script and download from the fresh database)"
+		echo "custom *url* (to download a custom URL from PornHub)"
+		echo "add *model/pornstar/channel/user* (to add a new model or pornstar to the database)"
+		echo "remove *model/pornstar/channel/user* (to remove a model or pornstar from the database)"
+		echo "clean *models/pornstars/channels/users* (to clean the -new.txt database)"
+		echo "config (to edit the config file)"
+		echo "update (to update script to the latest version)"
+		echo "-----------------"
+		echo "Example: phdler add here-goes-the-model-name"
+		echo "-----------------"
 		exit 1;
 
 elif [ "$action" == '-v' ]
@@ -388,9 +388,9 @@ elif [ "$action" == '-v' ]
 
 else
 		clear
-		echo $"-----------------"
-		echo $"Please run phdler with these commands:"
-		echo $"[start | refresh | custom | add | remove | clean | update | config | -h for help | -v for version]"
-		echo $"-----------------"
+		echo "-----------------"
+		echo "Please run phdler with these commands:"
+		echo "[start | refresh | custom | add | remove | clean | update | config | -h for help | -v for version]"
+		echo "-----------------"
 		exit 1;
 fi
