@@ -20,122 +20,104 @@ source $HOME/phdler/phdler.config
 
 if [ "$action" == 'start' ]
 	then	
-		filename=$models_file
-		filelines=`cat $filename`
+
 		echo Starting models
-		for line in $filelines ; do
-		       youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$line'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$line'/videos/upload'
-		done
+		while IFS= read -r modellist; do
+		       youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$modellist'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$modellist'/videos/upload'
+		done <$models_file
 
-		filenameps=$stars_file
-		filelinesps=`cat $filenameps`
 		echo Starting stars
-		for lineps in $filelinesps ; do
-		        youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$lineps'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$lineps'/videos/upload'
-		done
+		while IFS= read -r starslist; do
+		        youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$starslist'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$starslist'/videos/upload'
+		done <$stars_file
 
-		filenameus=$users_file
-		filelinesus=`cat $filenameus`
-		echo Starting stars
-		for lineus in $filelinesus ; do
-		        youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$lineus'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$lineus'/videos/public'
-		done
+		echo Starting users
+		while IFS= read -r userlist; do
+		        youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$userlist'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$userlist'/videos/public'
+		done <$users_file
 
-		filenamech=$channels_file
-		filelinesch=`cat $filenamech`
-		echo Starting stars
-		for linech in $filelinesch ; do
-		        youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$linech'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$linech'/videos'
-		done
+		echo Starting channels
+		while IFS= read -r channellist; do
+		        youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$channellist'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channellist'/videos'
+		done <$channels_file
 
 		echo Script run `date "+%H:%M:%S   %d/%m/%y"` >> $HOME/phdler.log
 
 
 elif [ "$action" == 'refresh' ]
 	then
-		filename=$models_file_new
-		filelines=`cat $filename`
 
-		for line in $filelines ; do
-		       echo Searching for $line
-		       if grep -Fxq "$line" $models_file
+		while read model; do
+		       echo Searching for $model
+		       if grep -Fxq "$model" $models_file
 			       then
 			       	echo "Model exists. Do you wish to download it anyways?"
 					select yn in "yes" "no"; do
 					    case $yn in
-					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$line'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$line'/videos/upload'; break;;
-					        no ) exit 1;
+					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$model'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$model'/videos/upload'; break;;
+					        no ) echo Sounds good boss;;
 					    esac
 					done
 			       else
-			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$line'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$line'/videos/upload'
-			       	echo $line >> $models_file
-			       	echo $line added to models.txt
+			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$model'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$model'/videos/upload'
+			       	echo $model >> $models_file
+			       	echo $model added to models.txt
 			   fi
-		done
+		done <$models_file_new
 
-		filenameps=$stars_file_new
-		filelinesps=`cat $filenameps`
-
-		for lineps in $filelinesps ; do
-		        echo Searching for $lineps
-		        if grep -Fxq "$lineps" $stars_file
+		while read star; do
+		        echo Searching for $star
+		        if grep -Fxq "$star" $stars_file
 			       then
 			       	echo "Pornstar exists. Do you wish to download it anyways?"
 					select yn in "yes" "no"; do
 					    case $yn in
-					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$lineps'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$lineps'/videos/upload'; break;;
-					        no ) exit 1;
+					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$star'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$star'/videos/upload'; break;;
+					        no ) echo Sounds good boss;;
 					    esac
 					done
 			       else
-			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$lineps'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$lineps'/videos/upload'
-			       	echo $lineps >> $stars_file
-			       	echo $lineps added to stars.txt
+			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$star'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$star'/videos/upload'
+			       	echo $star >> $stars_file
+			       	echo $star added to stars.txt
 			   fi
-		done
+		done <$stars_file_new
 
-		filenameus=$users_file_new
-		filelinesus=`cat $filenameus`
-
-		for lineus in $filelinesus ; do
-		       echo Searching for $lineus
-		       if grep -Fxq "$lineus" $users_file
+		while read user; do
+		       echo Searching for $user
+		       if grep -Fxq "$user" $users_file
 			       then
 			       	echo "User exists. Do you wish to download it anyways?"
 					select yn in "yes" "no"; do
 					    case $yn in
-					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$lineus'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$lineus'/videos/public'; break;;
-					        no ) exit 1;
+					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$user'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$user'/videos/public'; break;;
+					        no ) echo Sounds good boss;;
 					    esac
 					done
 			       else
-			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$lineus'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$lineus'/videos/public'
-			       	echo $lineus >> $users_file
-			       	echo $lineus added to users.txt
+			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$user'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$user'/videos/public'
+			       	echo $user >> $users_file
+			       	echo $user added to users.txt
 			   fi
-		done
+		done <$users_file_new
 
-		filenamech=$channels_file_new
-		filelinesch=`cat $filenamech`
-
-		for linech in $filelinesch ; do
-		       echo Searching for $linech
-		       if grep -Fxq "$linech" $channels_file
+		while read channel; do
+		       echo Searching for $channel
+		       if grep -Fxq "$channel" $channels_file
 			       then
 			       	echo "Channel exists. Do you wish to download it anyways?"
 					select yn in "yes" "no"; do
 					    case $yn in
-					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$linech'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$linech'/videos'; break;;
-					        no ) exit 1;
+					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$channel'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channel'/videos'; break;;
+					        no ) echo Sounds good boss;;
 					    esac
 					done
 			       else
-			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$linech'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$linech'/videos'
-			       	echo $linech >> $channels_file
-			       	echo $linech added to channels.txt
+			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$channel'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channel'/videos'
+			       	echo $channel >> $channels_file
+			       	echo $channel added to channels.txt
 			   fi
-		done
+		done <$channels_file_new
 
 elif [ "$action" == 'custom' ]
 	then
@@ -147,12 +129,11 @@ elif [ "$action" == 'custom' ]
 			echo $"-----------------"
 			exit 1;
 		else
-		youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/handpicked/%(title)s.%(ext)s' $command
+			youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/handpicked/%(title)s.%(ext)s' $command
 		fi
 
 elif [ "$action" == 'add' ]
 	then
-
 		if [ "$command" == '' ]
 		then
 				clear
@@ -302,7 +283,9 @@ elif [ "$action" == 'remove' ]
 				clear
 				echo $"Listing of models:"
 				echo $"-----------------"
-				cat $models_file
+				while IFS= read -r modellist; do
+					echo $modellist
+				done <$models_file
 				echo $"-----------------"
 				read -p 'Write the model name to remove (or type c to cancel): ' modelname
 
@@ -321,7 +304,9 @@ elif [ "$action" == 'remove' ]
 				clear
 				echo $"Listing of pornstars:"
 				echo $"-----------------"
-				cat $stars_file
+				while IFS= read -r starslist; do
+					echo $starslist
+				done <$stars_file
 				echo $"-----------------"
 				read -p 'Write the pornstar name to remove (or type c to cancel): ' starname
 
@@ -340,7 +325,9 @@ elif [ "$action" == 'remove' ]
 				clear
 				echo $"Listing of channels:"
 				echo $"-----------------"
-				cat $channels_file
+				while IFS= read -r channellist; do
+					echo $channellist
+				done <$channels_file
 				echo $"-----------------"
 				read -p 'Write the channel name to remove (or type c to cancel): ' channelname
 
@@ -359,7 +346,9 @@ elif [ "$action" == 'remove' ]
 				clear
 				echo $"Listing of users:"
 				echo $"-----------------"
-				cat $users_file
+				while IFS= read -r userlist; do
+					echo $userlist
+				done <$users_file
 				echo $"-----------------"
 				read -p 'Write the user name to remove (or type c to cancel): ' usname
 
