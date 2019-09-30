@@ -1,4 +1,4 @@
-# PornHub Downloader
+# PornHub Downloader v1.0.6
 
 [![GitHub Issues Open](https://github-basic-badges.herokuapp.com/issues/mariosemes/PornHub-downloader.svg)]()
 
