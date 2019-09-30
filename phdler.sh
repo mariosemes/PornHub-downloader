@@ -21,28 +21,28 @@ source $HOME/phdler/phdler.config
 ### Start script
 
 if [ "$action" == 'start' ]
-then	
-	echo Starting models
-	while IFS= read -r modellist; do
-		youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$modellist'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$modellist'/videos/upload'
-	done <$models_file
+	then	
+		echo Starting models
+		while IFS= read -r modellist; do
+			youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$modellist'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$modellist'/videos/upload'
+		done <$models_file
 
-	echo Starting stars
-	while IFS= read -r starslist; do
-		youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$starslist'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$starslist'/videos/upload'
-	done <$stars_file
+		echo Starting stars
+		while IFS= read -r starslist; do
+			youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$starslist'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$starslist'/videos/upload'
+		done <$stars_file
 
-	echo Starting users
-	while IFS= read -r userlist; do
-		youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$userlist'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$userlist'/videos/public'
-	done <$users_file
+		echo Starting users
+		while IFS= read -r userlist; do
+			youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$userlist'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$userlist'/videos/public'
+		done <$users_file
 
-	echo Starting channels
-	while IFS= read -r channellist; do
-		youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$channellist'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channellist'/videos'
-	done <$channels_file
+		echo Starting channels
+		while IFS= read -r channellist; do
+			youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$channellist'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channellist'/videos'
+		done <$channels_file
 
-	echo Script run `date "+%H:%M:%S   %d/%m/%y"` >> $HOME/phdler.log
+		echo Script run `date "+%H:%M:%S   %d/%m/%y"` >> $HOME/phdler.log
 
 
 elif [ "$action" == 'refresh' ]
@@ -99,7 +99,7 @@ elif [ "$action" == 'refresh' ]
 			fi
 		done <$channels_file_new
 
-	elif [ "$action" == 'custom' ]
+elif [ "$action" == 'custom' ]
 		then
 			if [ "$command" == '' ]
 			then
@@ -112,7 +112,7 @@ elif [ "$action" == 'refresh' ]
 				youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/handpicked/%(title)s.%(ext)s' $command
 			fi
 
-	elif [ "$action" == 'add' ]
+elif [ "$action" == 'add' ]
 		then
 			if [ "$command" == '' ]
 			then
@@ -212,7 +212,7 @@ elif [ "$action" == 'refresh' ]
 				fi
 			fi
 
-	elif [ "$action" == 'clean' ]
+elif [ "$action" == 'clean' ]
 		then
 			if [ "$command" == 'models' ]
 			then
@@ -256,7 +256,7 @@ elif [ "$action" == 'refresh' ]
 					exit 1;
 				fi
 
-	elif [ "$action" == 'remove' ]
+elif [ "$action" == 'remove' ]
 		then
 			if [ "$command" == 'model' ]
 			then
@@ -350,7 +350,58 @@ elif [ "$action" == 'refresh' ]
 					exit 1;
 				fi
 
-	elif [ "$action" == 'config' ]
+elif [ "$action" == 'list' ]
+		then
+			if [ "$command" == 'models' ]
+			then
+				clear
+				echo "Listing of models:"
+				echo "-----------------"
+				while IFS= read -r modellist; do
+					echo $modellist
+				done <$models_file
+				echo "-----------------"
+
+			elif [ "$command" == 'pornstars' ]
+				then
+					clear
+					echo "Listing of pornstars:"
+					echo "-----------------"
+					while IFS= read -r starslist; do
+						echo $starslist
+					done <$stars_file
+					echo "-----------------"
+
+			elif [ "$command" == 'channels' ]
+				then
+					clear
+					echo "Listing of channels:"
+					echo "-----------------"
+					while IFS= read -r channellist; do
+						echo $channellist
+					done <$channels_file
+					echo "-----------------"
+
+			elif [ "$command" == 'users' ]
+				then
+					clear
+					echo "Listing of users:"
+					echo "-----------------"
+					while IFS= read -r userlist; do
+						echo $userlist
+					done <$users_file
+					echo "-----------------"
+
+				else
+					echo "-----------------"
+					echo "Please run phdler list with these commands:"
+					echo "[models | pornstars | channels | users]"
+					echo "-----------------"
+					exit 1;
+			fi
+
+
+elif [ "$action" == 'config' ]
 		then
 			nano $HOME/phdler/phdler.config
 			exit 1;
@@ -366,20 +417,21 @@ elif [ "$action" == 'refresh' ]
 					echo "-----------------"
 					echo "You asked for help, here it comes! Run phdler with these commands:"
 					echo "-----------------"
-					echo "start (to start the script with already added models/pornstars)"
-					echo "refresh (to run the script and download from the fresh database)"
-					echo "custom *url* (to download a custom URL from PornHub)"
-					echo "add *model/pornstar/channel/user* (to add a new model or pornstar to the database)"
-					echo "remove *model/pornstar/channel/user* (to remove a model or pornstar from the database)"
-					echo "clean *models/pornstars/channels/users* (to clean the -new.txt database)"
-					echo "config (to edit the config file)"
-					echo "update (to update script to the latest version)"
+					echo "start (start the script)"
+					echo "refresh (run the script and download from the fresh database)"
+					echo "custom *url* (download a custom URL from PornHub)"
+					echo "add *model/pornstar/channel/user* (add to fresh database)"
+					echo "list *models/pornstars/channels/users* (show your database)"
+					echo "remove *model/pornstar/channel/user* (remove a model or pornstar from the database)"
+					echo "clean *models/pornstars/channels/users* (clean the -new.txt database)"
+					echo "config (edit the config file)"
+					echo "update (update script to the latest version)"
 					echo "-----------------"
 					echo "Example: phdler add here-goes-the-model-name"
 					echo "-----------------"
 					exit 1;
 
-	elif [ "$action" == '-v' ]
+elif [ "$action" == '-v' ]
 		then
 			echo "phdler version: $version"
 			exit 1;
@@ -388,7 +440,7 @@ elif [ "$action" == 'refresh' ]
 			clear
 			echo "-----------------"
 			echo "Please run phdler with these commands:"
-			echo "[start | refresh | custom | add | remove | clean | update | config | -h for help | -v for version]"
+			echo "[start | refresh | custom | add | list | remove | clean | update | config | -h for help | -v for version]"
 			echo "-----------------"
 			exit 1;
 
