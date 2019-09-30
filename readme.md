@@ -49,7 +49,7 @@ https://www.pornhub.com/pornstar/leolulu
 ## Usage
 Basic command line syntax:
 ```bash
-$ phdler [start | refresh | custom | add | remove | clean | update | config | -h for help] 
+$ phdler [start | refresh | custom | add | remove | clean | update | config | -h for help | -v for version] 
 ```
 
 ## Examples:
