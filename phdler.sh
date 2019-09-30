@@ -1,5 +1,7 @@
 #!/bin/bash
 
+version="1.0.6"
+
 ### Set default parameters
 action=$1
 command=$2
@@ -48,74 +50,54 @@ elif [ "$action" == 'refresh' ]
 	then
 
 		while read model; do
-		       echo Searching for $model
-		       if grep -Fxq "$model" $models_file
-			       then
-			       	echo "Model exists. Do you wish to download it anyways?"
-					select yn in "yes" "no"; do
-					    case $yn in
-					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$model'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$model'/videos/upload'; break;;
-					        no ) echo Sounds good boss;;
-					    esac
-					done
-			       else
-			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$model'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$model'/videos/upload'
-			       	echo $model >> $models_file
-			       	echo $model added to models.txt
-			   fi
+		        echo Searching for $model
+				youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$model'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$model'/videos/upload'
+				       	
+				if grep -Fxq "$model" $models_file
+				then
+					echo "Model exists. Not adding to models.txt"
+				else
+					echo $model >> $models_file
+				    echo $model added to models.txt
+			    fi
 		done <$models_file_new
 
 		while read star; do
 		        echo Searching for $star
-		        if grep -Fxq "$star" $stars_file
-			       then
-			       	echo "Pornstar exists. Do you wish to download it anyways?"
-					select yn in "yes" "no"; do
-					    case $yn in
-					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$star'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$star'/videos/upload'; break;;
-					        no ) echo Sounds good boss;;
-					    esac
-					done
-			       else
-			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$star'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$star'/videos/upload'
-			       	echo $star >> $stars_file
-			       	echo $star added to stars.txt
+		        youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$star'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$star'/videos/upload'
+
+			   if grep -Fxq "$star" $stars_file
+				then
+					echo "Pornstar exists. Not adding to stars.txt"
+				else
+					echo $star >> $stars_file
+				    echo $star added to stars.txt
 			   fi
 		done <$stars_file_new
 
 		while read user; do
 		       echo Searching for $user
-		       if grep -Fxq "$user" $users_file
-			       then
-			       	echo "User exists. Do you wish to download it anyways?"
-					select yn in "yes" "no"; do
-					    case $yn in
-					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$user'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$user'/videos/public'; break;;
-					        no ) echo Sounds good boss;;
-					    esac
-					done
-			       else
-			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$user'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$user'/videos/public'
-			       	echo $user >> $users_file
-			       	echo $user added to users.txt
+		       youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$user'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$user'/videos/public'
+
+			   if grep -Fxq "$user" $users_file
+				then
+					echo "User exists. Not adding to users.txt"
+				else
+					echo $user >> $users_file
+				    echo $user added to users.txt
 			   fi
 		done <$users_file_new
 
 		while read channel; do
 		       echo Searching for $channel
-		       if grep -Fxq "$channel" $channels_file
-			       then
-			       	echo "Channel exists. Do you wish to download it anyways?"
-					select yn in "yes" "no"; do
-					    case $yn in
-					        yes ) youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$channel'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channel'/videos'; break;;
-					        no ) echo Sounds good boss;;
-					    esac
-					done
-			       else
-			       	youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$channel'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channel'/videos'
-			       	echo $channel >> $channels_file
-			       	echo $channel added to channels.txt
+		       youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$channel'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channel'/videos'
+
+			   if grep -Fxq "$channel" $channels_file
+				then
+					echo "Channel exists. Not adding to channels.txt"
+				else
+					echo $channel >> $channels_file
+				    echo $channel added to channels.txt
 			   fi
 		done <$channels_file_new
 
@@ -399,11 +381,16 @@ elif [ "$action" == '-h' ]
 		echo $"-----------------"
 		exit 1;
 
+elif [ "$action" == '-v' ]
+	then
+		echo "phdler version: $version"
+		exit 1;
+
 else
 		clear
 		echo $"-----------------"
 		echo $"Please run phdler with these commands:"
-		echo $"[start | refresh | custom | add | remove | clean | update | config | -h for help]"
+		echo $"[start | refresh | custom | add | remove | clean | update | config | -h for help | -v for version]"
 		echo $"-----------------"
 		exit 1;
 fi
