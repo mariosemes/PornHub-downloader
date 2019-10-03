@@ -6,8 +6,6 @@ version="1.0.7"
 action=$1
 command=$2
 
-downloadsettings="$ytdlsetts '$aria2csetts'"
-
 stars_file="$HOME/phdler/stars.txt"
 stars_file_new="$HOME/phdler/stars-new.txt"
 models_file="$HOME/phdler/models.txt"
@@ -19,6 +17,8 @@ users_file_new="$HOME/phdler/users-new.txt"
 
 ### Loading config file
 source $HOME/phdler/phdler.config
+
+downloadsettings="$ytdlsetts '$aria2csetts'"
 
 ### Start script
 
