@@ -13,9 +13,8 @@ If you feel like it, you can donate me a beer or two ;) Just for the troubles!
 **(This script runs and its tested on Ubuntu 16.04 & 18.04)**
 
 ## Requirements
-This script does not run without this tools:
+This script does not run without this tool:
 1. YouTube-DL (google it for installation)
-2. aria2c (google it for installation)
 
 ## Installation
 ```bash

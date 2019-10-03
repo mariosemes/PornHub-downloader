@@ -6,12 +6,6 @@ if ! [ -x "$(command -v youtube-dl)" ]; then
   echo $"Please, install the tool as mentioned in the installation guide."
 fi
 
-if ! [ -x "$(command -v aria2c)" ]; then
-  echo $"Error: aria2c is not installed."
-  echo $"Please, install the tool as mentioned in the installation guide."
-  exit 1;
-fi 
-
 ### Moving files
 mkdir $HOME/phdler
 echo $"phdler folder created"
