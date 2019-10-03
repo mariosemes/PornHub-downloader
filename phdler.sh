@@ -6,7 +6,7 @@ version="1.0.7"
 action=$1
 command=$2
 
-downloadsettings="$downloadsettings"
+downloadsettings="$ytdlsetts '$aria2csetts'"
 
 stars_file="$HOME/phdler/stars.txt"
 stars_file_new="$HOME/phdler/stars-new.txt"
