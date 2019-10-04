@@ -406,12 +406,12 @@ elif [ "$action" == 'config' ]
 			nano $HOME/phdler/phdler.config
 			exit 1;
 
-		elif [ "$action" == 'update' ]
+elif [ "$action" == 'update' ]
 			then
 				sh $HOME/phdler/update.sh
 				exit 1;
 
-			elif [ "$action" == '-h' ]
+elif [ "$action" == '-h' ]
 				then
 					clear
 					echo "-----------------"
