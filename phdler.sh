@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1.0.6"
+version="1.0.7"
 
 ### Set default parameters
 action=$1
@@ -24,22 +24,22 @@ if [ "$action" == 'start' ]
 	then	
 		echo Starting models
 		while IFS= read -r modellist; do
-			youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$modellist'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$modellist'/videos/upload'
+			youtube-dl $ytdlsetts $lastvideos -o $dllocation'/'$modellist'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$modellist'/videos/upload'
 		done <$models_file
 
 		echo Starting stars
 		while IFS= read -r starslist; do
-			youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$starslist'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$starslist'/videos/upload'
+			youtube-dl $ytdlsetts $lastvideos -o $dllocation'/'$starslist'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$starslist'/videos/upload'
 		done <$stars_file
 
 		echo Starting users
 		while IFS= read -r userlist; do
-			youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$userlist'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$userlist'/videos/public'
+			youtube-dl $ytdlsetts $lastvideos -o $dllocation'/'$userlist'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$userlist'/videos/public'
 		done <$users_file
 
 		echo Starting channels
 		while IFS= read -r channellist; do
-			youtube-dl -w -v -i --playlist-start 1 --playlist-end $lastvideos --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$channellist'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channellist'/videos'
+			youtube-dl $ytdlsetts $lastvideos -o $dllocation'/'$channellist'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channellist'/videos'
 		done <$channels_file
 
 		echo Script run `date "+%H:%M:%S   %d/%m/%y"` >> $HOME/phdler.log
@@ -49,7 +49,7 @@ elif [ "$action" == 'refresh' ]
 	then
 		while read model; do
 			echo Searching for $model
-			youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$model'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$model'/videos/upload'
+			youtube-dl $ytdlsetts -o $dllocation'/'$model'/%(title)s.%(ext)s' 'https://www.pornhub.com/model/'$model'/videos/upload'
 
 			if grep -Fxq "$model" $models_file
 			then
@@ -62,7 +62,7 @@ elif [ "$action" == 'refresh' ]
 
 		while read star; do
 			echo Searching for $star
-			youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$star'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$star'/videos/upload'
+			youtube-dl $ytdlsetts -o $dllocation'/'$star'/%(title)s.%(ext)s' 'https://www.pornhub.com/pornstar/'$star'/videos/upload'
 
 			if grep -Fxq "$star" $stars_file
 			then
@@ -75,7 +75,7 @@ elif [ "$action" == 'refresh' ]
 
 		while read user; do
 			echo Searching for $user
-			youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$user'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$user'/videos/public'
+			youtube-dl $ytdlsetts -o $dllocation'/'$user'/%(title)s.%(ext)s' 'https://www.pornhub.com/users/'$user'/videos/public'
 
 			if grep -Fxq "$user" $users_file
 			then
@@ -88,7 +88,7 @@ elif [ "$action" == 'refresh' ]
 
 		while read channel; do
 			echo Searching for $channel
-			youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/'$channel'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channel'/videos'
+			youtube-dl $ytdlsetts -o $dllocation'/'$channel'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channel'/videos'
 
 			if grep -Fxq "$channel" $channels_file
 			then
@@ -109,7 +109,7 @@ elif [ "$action" == 'custom' ]
 				echo "-----------------"
 				exit 1;
 			else
-				youtube-dl -w -v -i --external-downloader aria2c --external-downloader-args '--file-allocation=none -c -j 10 -x 16 --summary-interval=0' -o $dllocation'/handpicked/%(title)s.%(ext)s' $command
+				youtube-dl $ytdlsetts -o $dllocation'/handpicked/%(title)s.%(ext)s' $command
 			fi
 
 elif [ "$action" == 'add' ]
