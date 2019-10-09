@@ -1,6 +1,8 @@
-# PornHub Downloader v1.0.7
+# PornHub Downloader v1.0.7 (deprecated)
 
-[![GitHub Issues Open](https://github-basic-badges.herokuapp.com/issues/mariosemes/PornHub-downloader.svg)]()
+## This script is deprecated as we moved to the python version for a better experience. <br >
+Please visit the new repo: [PornHub-downloader-python](https://github.com/mariosemes/PornHub-downloader-python) <br >
+## !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! <br >
 
 Hello everyone. This project was created for myself as a platform for learning bash. Hope its gonna help someone out :)
 
