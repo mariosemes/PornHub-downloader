@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# DEPRECATED 9.11.2019.
+
 version="1.0.7"
 
 ### Set default parameters

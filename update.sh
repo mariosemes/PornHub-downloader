@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# DEPRECATED 9.11.2019.
+
 FILE="phdler-new.sh"
 URL="https://raw.githubusercontent.com/mariosemes/PornHub-downloader/master/phdler.sh"
 

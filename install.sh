@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# DEPRECATED 9.11.2019.
+
 ### Checking if tools are installed
 if ! [ -x "$(command -v youtube-dl)" ]; then
   echo $"Error: youtube-dl is not installed."
