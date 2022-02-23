@@ -6,86 +6,88 @@
 if ! [ -x "$(command -v youtube-dl)" ]; then
   echo $"Error: youtube-dl is not installed."
   echo $"Please, install the tool as mentioned in the installation guide."
+  exit 1
 fi
 
+### Defining locations
+bin=$HOME/.local/bin
+var=$HOME/.local/var/phdler
+
 ### Moving files
-mkdir $HOME/phdler
-echo $"phdler folder created"
-cp phdler.sh $HOME/phdler/phdler.sh
-chmod +x $HOME/phdler/phdler.sh
-cp phdler.config $HOME/phdler/phdler.config
-cp update.sh $HOME/phdler/update.sh
-chmod +x $HOME/phdler/update.sh
+mkdir -p $var
+cp phdler.sh $bin/phdler
+chmod +x $bin/phdler
+cp phdler.config $HOME/.config
+cp update.sh $bin/phdler-update
+chmod +x $bin/phdler-update.sh
 echo $"script & config moved"
 
-if [ -f "$HOME/phdler/stars.txt" ]
+if [ -f "$var/phdler/stars.txt" ]
 	then
 	    echo "stars.txt exists"
 	else
-	   	touch $HOME/phdler/stars.txt
+	   	touch $var/stars.txt
 	   	echo "stars.txt created"
 fi
 
-if [ -f "$HOME/phdler/stars-new.txt" ]
+if [ -f "$var/stars-new.txt" ]
 	then
 	    echo "stars-new.txt exists"
 	else
-	   	touch $HOME/phdler/stars-new.txt
+	   	touch $var/stars-new.txt
 	   	echo "stars-new.txt created"
 fi
 
-if [ -f "$HOME/phdler/models.txt" ]
+if [ -f "$var/models.txt" ]
 	then
 	    echo "models.txt exists"
 	else
-	   	touch $HOME/phdler/models.txt
+	   	touch $var/models.txt
 	   	echo "models.txt created"
 fi
 
-if [ -f "$HOME/phdler/models-new.txt" ]
+if [ -f "$var/models-new.txt" ]
 	then
 	    echo "models-new.txt exists"
 	else
-	   	touch $HOME/phdler/models-new.txt
+	   	touch $var/models-new.txt
 	   	echo "models-new.txt created"
 fi
 
-if [ -f "$HOME/phdler/users.txt" ]
+if [ -f "$var/users.txt" ]
 	then
 	    echo "users.txt exists"
 	else
-	   	touch $HOME/phdler/users.txt
+	   	touch $var/users.txt
 	   	echo "users.txt created"
 fi
 
-if [ -f "$HOME/phdler/users-new.txt" ]
+if [ -f "$var/users-new.txt" ]
 	then
 	    echo "users-new.txt exists"
 	else
-	   	touch $HOME/phdler/users-new.txt
+	   	touch $var/users-new.txt
 	   	echo "users-new.txt created"
 fi
 
-if [ -f "$HOME/phdler/channels.txt" ]
+if [ -f "$var/channels.txt" ]
 	then
 	    echo "channels.txt exists"
 	else
-	   	touch $HOME/phdler/channels.txt
+	   	touch $var/channels.txt
 	   	echo "channels.txt created"
 fi
 
-if [ -f "$HOME/phdler/channels-new.txt" ]
+if [ -f "$var/channels-new.txt" ]
 	then
 	    echo "channels-new.txt exists"
 	else
-	   	touch $HOME/phdler/channels-new.txt
+	   	touch $var/channels-new.txt
 	   	echo "channels-new.txt created"
 fi
 
 echo "-----------------"
 echo "Script installed."
 echo "-----------------"
-echo "Please run this command as admin:"
-echo "sudo ln -s ~/phdler/phdler.sh /usr/local/bin/phdler"
+echo "To view usage type phdler -h"
 echo "-----------------"
-exit 1;

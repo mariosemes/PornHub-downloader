@@ -8,17 +8,19 @@ version="1.0.7"
 action=$1
 command=$2
 
-stars_file="$HOME/phdler/stars.txt"
-stars_file_new="$HOME/phdler/stars-new.txt"
-models_file="$HOME/phdler/models.txt"
-models_file_new="$HOME/phdler/models-new.txt"
-channels_file="$HOME/phdler/channels.txt"
-channels_file_new="$HOME/phdler/channels-new.txt"
-users_file="$HOME/phdler/users.txt"
-users_file_new="$HOME/phdler/users-new.txt"
+var=$HOME/.local/var/phdler
+
+stars_file="$var/stars.txt"
+stars_file_new="$var/stars-new.txt"
+models_file="$var/models.txt"
+models_file_new="$var/models-new.txt"
+channels_file="$var/channels.txt"
+channels_file_new="$var/channels-new.txt"
+users_file="$var/users.txt"
+users_file_new="$var/users-new.txt"
 
 ### Loading config file
-source $HOME/phdler/phdler.config
+source $HOME/.config/phdler.config
 
 ### Start script
 
@@ -44,7 +46,7 @@ if [ "$action" == 'start' ]
 			youtube-dl $ytdlsetts $lastvideos -o $dllocation'/'$channellist'/%(title)s.%(ext)s' 'https://www.pornhub.com/channels/'$channellist'/videos'
 		done <$channels_file
 
-		echo Script run `date "+%H:%M:%S   %d/%m/%y"` >> $HOME/phdler.log
+		echo Script run `date "+%H:%M:%S   %d/%m/%y"` >> $var.log
 
 
 elif [ "$action" == 'refresh' ]
@@ -273,7 +275,7 @@ elif [ "$action" == 'remove' ]
 
 			if [ "$modelname" != 'c' ]
 			then
-				grep -v "$modelname" $models_file > $HOME/phdler/models2.txt; mv $HOME/phdler/models2.txt $models_file
+				grep -v "$modelname" $models_file > $var/models2.txt; mv $var/models2.txt $models_file
 				echo Deleted $modelname
 				exit 1;
 			else
@@ -294,7 +296,7 @@ elif [ "$action" == 'remove' ]
 
 					if [ "$starname" != 'c' ]
 					then
-						grep -v "$modelname" $stars_file > $HOME/phdler/stars2.txt; mv $HOME/phdler/stars2.txt $stars_file
+						grep -v "$modelname" $stars_file > $var/stars2.txt; mv $var/stars2.txt $stars_file
 						echo Deleted $starname
 						exit 1;
 					else
@@ -315,7 +317,7 @@ elif [ "$action" == 'remove' ]
 
 					if [ "$channelname" != 'c' ]
 					then
-						grep -v "$channelname" $channels_file > $HOME/phdler/channels2.txt; mv $HOME/phdler/channels2.txt $channels_file
+						grep -v "$channelname" $channels_file > $var/channels2.txt; mv $var/channels2.txt $channels_file
 						echo Deleted $channelname
 						exit 1;
 					else
@@ -336,7 +338,7 @@ elif [ "$action" == 'remove' ]
 
 					if [ "$usname" != 'c' ]
 					then
-						grep -v "$usname" $users_file > $HOME/phdler/users2.txt; mv $HOME/phdler/users2.txt $users_file
+						grep -v "$usname" $users_file > $var/users2.txt; mv $var/users2.txt $users_file
 						echo Deleted $usname
 						exit 1;
 					else
@@ -405,12 +407,12 @@ elif [ "$action" == 'list' ]
 
 elif [ "$action" == 'config' ]
 		then
-			nano $HOME/phdler/phdler.config
+			nano $HOME/.config/phdler.config
 			exit 1;
 
 elif [ "$action" == 'update' ]
 			then
-				sh $HOME/phdler/update.sh
+				sh $var/update.sh
 				exit 1;
 
 elif [ "$action" == '-h' ]

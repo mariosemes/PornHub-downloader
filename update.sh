@@ -5,11 +5,9 @@
 FILE="phdler-new.sh"
 URL="https://raw.githubusercontent.com/mariosemes/PornHub-downloader/master/phdler.sh"
 
-wget $URL -O $HOME/phdler/$FILE
+wget $URL -O $HOME/.local/var/phdler/$FILE
 echo $"Downloaded the new version"
-rm $HOME/phdler/phdler.sh
-echo $"Removed the current one"
-mv $HOME/phdler/phdler-new.sh $HOME/phdler/phdler.sh
+mv $HOME/.local/var/phdler/$FILE $HOME/.local/bin/phdler
 chmod +x $HOME/phdler/phdler.sh
 echo $"New one installed."
 echo $"------------------"
